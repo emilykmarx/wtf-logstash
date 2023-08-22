@@ -1,0 +1,17 @@
+CONTRIBUTORS
+Gemfile.lock
+JDK_VERSION
+LICENSE.txt
+NOTICE.TXT
+bin/
+config/
+data/
+jdk/
+lib/
+logs/
+logstash-core-plugin-api/
+logstash-core/
+modules/
+tools/
+vendor/
+x-pack/
