@@ -1,0 +1,3 @@
+[submodule "wtf/logstash-integration-rabbitmq"]
+	path = wtf/logstash-integration-rabbitmq
+	url = git@github.com:emilykmarx/logstash-integration-rabbitmq.git
