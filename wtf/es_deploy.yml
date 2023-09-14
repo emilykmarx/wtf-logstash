@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: elasticsearch
+  name: elasticsearch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elasticsearch
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: elasticsearch
+    spec:
+      containers:
+      - image: elasticsearch
+        name: elasticsearch
+        resources: {}
+        imagePullPolicy: Never
+status: {}
