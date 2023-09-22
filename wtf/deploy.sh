@@ -69,10 +69,13 @@ kubectl exec -it nacos-0 -- curl http://ls-exporter-logstash-exporter:9198/metri
 # Test Prom scrapes LS metrics
 kubectl exec -it nacos-0 -- curl http://prometheus.kube-system.svc.cluster.local:9090/api/v1/query?query=logstash_stats_pipeline_events_out
 
-## RMQ
-# LEFT OFF
-# test this script e2e, then commit here & tt, then:
- #https://www.rabbitmq.com/prometheus.html
+popd
+popd
 
-popd
-popd
+## RMQ
+RMQ=$(kubectl get pods -l app=rabbitmq --no-headers -o custom-columns=":metadata.name")
+kubectl exec -it $RMQ -- rabbitmq-plugins enable rabbitmq_prometheus
+# Test RMQ exports Prom metrics (may need to wait a bit?)
+kubectl exec -it nacos-0 -- curl http://rabbitmq:15692/metrics | grep rabbitmq_queues
+# Test Prom scrapes RMQ metrics
+kubectl exec -it nacos-0 -- curl http://prometheus.kube-system.svc.cluster.local:9090/api/v1/query?query=rabbitmq_queues
