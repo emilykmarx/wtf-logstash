@@ -1,0 +1,25 @@
+# Logstash
+[[elements]]
+url = "http://ls-exporter-logstash-exporter:9198/metrics"
+
+[[elements.bounds]]
+metric_name = "logstash_stats_pipeline_events_out"
+bound_type = "abs_upper"
+limit = 0
+
+# Elasticsearch
+[[elements]]
+url = "http://es-exporter-prometheus-elasticsearch-exporter:9108/metrics"
+[[elements.bounds]]
+metric_name = "elasticsearch_indices_docs_total"
+bound_type = "abs_upper"
+limit = 0
+
+# Rabbitmq
+[[elements]]
+url = "http://rabbitmq:15692/metrics"
+
+[[elements.bounds]]
+metric_name = "rabbitmq_queues"
+bound_type = "abs_upper"
+limit = 1
