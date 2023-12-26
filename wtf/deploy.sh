@@ -20,7 +20,7 @@ set -e
 
 # ElasticSearch
 docker build -t elasticsearch -f es_Dockerfile .
-kind load docker-image elasticsearch:8.9.0 --name train-ticket
+kind load docker-image elasticsearch:latest --name train-ticket
 kubectl apply -f es_deploy.yml
 # expose so LS can reach it
 kubectl expose deployment/elasticsearch --type="NodePort" --port 9200
