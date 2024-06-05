@@ -12,6 +12,14 @@ RUN apt-get update \
 RUN wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.9.0-linux-x86_64.tar.gz
 RUN tar -xzf elasticsearch-8.9.0-linux-x86_64.tar.gz
 
+# TODO ES deps: jdk 17, set java_home
+# clone elasticsearch fork
+#./gradlew build -p plugins/wtf
+# rm -rf /home/emily/projects/wtf_project/elasticsearch/distribution/archives/linux-tar/build/install/elasticsearch-8.9.0-SNAPSHOT/plugins/wtf
+#./distribution/archives/linux-tar/build/install/elasticsearch-8.9.0-SNAPSHOT/bin/elasticsearch-plugin install \
+#     file:///home/emily/projects/wtf_project/elasticsearch/plugins/wtf/build/distributions/wtf-8.9.0-SNAPSHOT.zip
+
+
 # ES doesn't allow root to run it
 RUN useradd elasticsearch
 RUN echo "elasticsearch:elasticsearch" | chpasswd

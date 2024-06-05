@@ -16,7 +16,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # ES client
-RUN python3 -m pip install elasticsearch
+# TODO elasticsearch warns that versions of python pkg deps are incompatible
+RUN python3 -m pip install elasticsearch==8.9.0
 
 # Prom agent
 COPY . .

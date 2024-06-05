@@ -10,6 +10,29 @@ RUN apt-get update \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
+# LS deps:
+# NOTE don't use the rake commands in the v8.9.0 readme - use the ones below
+# sudo apt-get update
+# sudo apt install -y openjdk-17-jdk-headless openjdk-17-jre-headless
+# Note: readme says ruby version should match one in .ruby-version which is jruby9.3, yet says to install jruby9.2
+# wget https://repo1.maven.org/maven2/org/jruby/jruby-dist/9.2.21.0/jruby-dist-9.2.21.0-bin.tar.gz
+# tar xvf jruby-dist-9.2.21.0-bin.tar.gz
+# add to bashrc:
+ # export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ # export PATH=$JAVA_HOME/bin:$PATH
+ # export PATH=/home/emily/projects/wtf_project/jruby-9.2.21.0/bin:$PATH
+ # export OSS=true
+ # export LOGSTASH_SOURCE=1
+ # export LOGSTASH_PATH=/home/emily/projects/wtf_project/logstash
+# source ~/.bashrc
+# gem install rake
+# gem install bundler -v 2.3.27
+# cd logstash
+# ./gradlew installDevelopmentGems
+# ./gradlew installDefaultGems
+# bin/logstash -e 'input { stdin { } } output { stdout {} }'
+
+
 COPY . wtf-logstash
 # no-op if copying from a local version of logstash with plugin already installed
 WORKDIR wtf-logstash
